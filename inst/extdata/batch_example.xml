@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BatchRunner xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="batch_runner.xsd">
+	    <ComponentSet name="emissions">
+                <FileSet name="_emiss-lo">
+                        <Value name="emisisons">../input/scenario_inputs/emissions_low_balanced.xml</Value>
+                        <Value name="near-term-co2">../input/scenario_inputs/spa14_tax.xml</Value>
+                        <Value name="co2-link">../input/scenario_inputs/2025_target_finder.xml</Value>
+                </FileSet>
+                <FileSet name="_emiss-hi">
+                        <Value name="emissions">../input/scenario_inputs/emissions_high_balanced.xml</Value>
+                        <Value name="near-term-co2">../input/scenario_inputs/spa14_tax.xml</Value>
+                        <Value name="co2-link">../input/scenario_inputs/2025_target_finder.xml</Value>
+                </FileSet>
+        </ComponentSet>
+	    <ComponentSet name="bioenergy">
+                <FileSet name="_bio-hi">
+                        <Value name="bioenergy">../input/scenario_inputs/bio_constraint_100_hi.xml</Value>
+                </FileSet>
+                <FileSet name="_bio-lo">
+                </FileSet>
+        </ComponentSet>
+
+</BatchRunner>
+
+

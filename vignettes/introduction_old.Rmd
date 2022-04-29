@@ -1,0 +1,62 @@
+---
+title: "introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(gcamxmlgen)
+input_dir <- system.file("extdata", package="gcamxmlgen")
+output_dir <- getwd()
+```
+
+set_xml
+
+Single Value
+
+Multiple values over different nodes
+
+```{r set_xml multiple nodes}
+elec_water_file <- paste0(input_dir, "electricity_water.xml")
+elec_water_tree <- xml2::read_xml(elec_water_file)
+
+elec_water_lo <- set_xml(elec_water_tree, 0.6, leaf_name="capacity_limit", node_name="stub-technology",
+                         node_attrs=list("name"="wind"))  # don't need to write result this time
+
+elec_water_lo <- set_xml(elec_water_tree, 0.67, leaf_name="capacity_limit", node_name="stub-technology",
+                         node_attrs=list("name"=c("PV", "CSP (recirculating)", "rooftop_pv", "CSP (dry_hybrid)")),
+                         output_filename = paste0(output_dir, "electricity_water_lo.xml"))
+```
+
+CSV
+
+
+modify_attrs
+
+
+remove_nodes_from_file
+
+Create a cross of existing files
+```{r replace_xml}
+solar_lo_file <-paste0(input_dir,"solar_low.xml")
+solar_hi_file <- paste0(input_dir,"solar_adv.xml")
+node_name <- "technology"
+node_attrs <- list("name"=c("CSP_storage", "PV_storage"))
+
+solar_ht_ls <- replace_xml(solar_hi_file, solar_lo_file, node_name, node_attrs, paste0(output_dir, "solar_hi_tech_lo_storage.xml"))
+solar_hs_lt <- replace_xml(solar_lo_file, solar_hi_file, node_name, node_attrs, paste0(output_dir, "solar_lo_tech_hi_storage.xml"))
+```
+replace_xml
+
+
+add_children_to_xml
