@@ -93,14 +93,14 @@ make_node <- function(tag,name=NULL){
     node_str <- paste0("<",tag," name='", name,"'></",tag,">")
   } else node_str <- paste0("<",tag,"></",tag,">")
 
-  node <- read_xml(node_str)
-  return(xml_root(node))
+  node <- xml2::read_xml(node_str)
+  return(xml2::xml_root(node))
 }
 
 make_leaf <- function(value){
   node_str <- paste0("<Value>",value,"</Value>")
-  node <- read_xml(node_str)
-  node_root <- xml_root(node)
+  node <- xml2::read_xml(node_str)
+  node_root <- xml2::xml_root(node)
   return(node_root)
 }
 

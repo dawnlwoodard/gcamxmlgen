@@ -132,7 +132,6 @@ make_batch <- function(input_dir, ensemble_set, outfile, outer_tag="ComponentSet
       xml2::xml_add_child(file_node,value_node)
 
       for (j in 1:length(sibs)){
-        print(sibs[[j]])
         sib <- xml2::read_xml(sibs[[j]])
         xml2::xml_add_child(file_node, sib)
       }

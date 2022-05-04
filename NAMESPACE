@@ -2,7 +2,9 @@
 
 export(add_children_to_xml)
 export(find_matches)
+export(get_file_stem)
 export(get_path)
+export(make_batch)
 export(set_value)
 export(set_xml)
 export(strip_string)
